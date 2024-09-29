@@ -3,7 +3,7 @@ import { debounce } from "lodash";
 import { useCallback, useEffect, useState } from "react";
 
 export const useFetchName = (query, transformData, promise, debounceWait) => {
-  const [data, setData] = useState();
+  const [data, setData] = useState(null);
   const [error, setError] = useState();
   const [loading, setLoading] = useState(false);
 
@@ -12,7 +12,6 @@ export const useFetchName = (query, transformData, promise, debounceWait) => {
       setLoading(true);
       try {
         const response = await promise(query, signal);
-
         if (!response.ok) throw new Error(response.statusText);
 
         const result = await response.json();
@@ -30,7 +29,7 @@ export const useFetchName = (query, transformData, promise, debounceWait) => {
 
   useEffect(() => {
     if (!query) {
-      setData([]);
+      setData(null);
       setError(null);
       setLoading(false);
       return;

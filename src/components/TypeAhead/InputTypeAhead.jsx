@@ -7,6 +7,7 @@ import { transformData } from "../../../utils";
 
 const InputTypeAhead = () => {
   const [query, setQuery] = useState("");
+  const [apiQuery, setApiQuery] = useState("");
   const [activeIndex, setActiveIndex] = useState(-1);
   const [showDropdown, setShowDropDown] = useState(false);
 
@@ -14,19 +15,19 @@ const InputTypeAhead = () => {
     await fetch(`https://swapi.dev/api/people/?search=${query}`);
 
   const [data, setData, error, loading] = useFetchName(
-    query,
+    apiQuery,
     transformData,
     promise,
-    400
+    200
   );
 
   const handleKeyUp = (e) => {
     if (e.keyCode === 13) {
       if (activeIndex === -1) return;
-      setQuery(data[activeIndex].name);
-      setData([]);
+
+      setData(null);
       setActiveIndex(-1);
-      setShowDropDown(false);
+      setQuery(data[activeIndex].name);
     } else if (e.keyCode === 40) {
       if (activeIndex === -1 || activeIndex === data.length - 1) {
         setActiveIndex(0);
@@ -44,16 +45,16 @@ const InputTypeAhead = () => {
 
   const handleChange = (value) => {
     setQuery(value);
+    setApiQuery(value);
     setShowDropDown(true);
 
     if (value.trim() === "") {
-      setData([]);
       setShowDropDown(false);
     }
   };
 
   return (
-    <div className="flex flex-col gap-4 p-4">
+    <div className="flex flex-col gap-4 p-4 h-[600px]">
       <h1 className="text-2xl font-medium">Enter Name</h1>
 
       <input
@@ -69,7 +70,10 @@ const InputTypeAhead = () => {
           list={data}
           error={error}
           loading={loading}
+          setData={setData}
+          setQuery={setQuery}
           activeIndex={activeIndex}
+          setActiveIndex={setActiveIndex}
         />
       )}
     </div>

@@ -2,7 +2,15 @@ import { useEffect, useRef } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 
 /* eslint-disable react/prop-types */
-const DropDown = ({ list, loading, error, activeIndex }) => {
+const DropDown = ({
+  list,
+  error,
+  loading,
+  setData,
+  setQuery,
+  activeIndex,
+  setActiveIndex,
+}) => {
   const itemRefs = useRef([]);
 
   useEffect(() => {
@@ -14,9 +22,17 @@ const DropDown = ({ list, loading, error, activeIndex }) => {
     }
   }, [activeIndex]);
 
+  if (list === null) return null;
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error fetching names ☹️</p>;
-  if (!loading && list.length === 0) return <p>No names found</p>;
+  if (!loading && list !== null && list.length === 0)
+    return <p>No names found</p>;
+
+  const handleClick = (index) => {
+    setData(null);
+    setActiveIndex(-1);
+    setQuery(list[index].name);
+  };
 
   return (
     <AnimatePresence mode="wait">
@@ -40,17 +56,19 @@ const DropDown = ({ list, loading, error, activeIndex }) => {
         }}
       >
         <ul className="flex flex-col items-start">
-          {list.map((character, index) => (
-            <li
-              ref={(el) => (itemRefs.current[index] = el)}
-              key={character.url}
-              className={`p-5 w-full border-b border-black/20 last:border-none ${
-                activeIndex === index ? "bg-gray-200" : ""
-              }`}
-            >
-              {character.name}
-            </li>
-          ))}
+          {list !== null &&
+            list.map((character, index) => (
+              <li
+                ref={(el) => (itemRefs.current[index] = el)}
+                key={character.url}
+                className={`cursor-pointer p-5 w-full border-b border-black/20 last:border-none hover:bg-gray-200 transition duration-300 ${
+                  activeIndex === index ? "bg-gray-200" : ""
+                }`}
+                onClick={() => handleClick(index)}
+              >
+                {character.name}
+              </li>
+            ))}
         </ul>
       </motion.div>
     </AnimatePresence>
