@@ -1,9 +1,9 @@
 /* This is basically an autocomplete search-box */
 
-import DropDown from "./DropDown";
 import { useState } from "react";
-import { useFetchName } from "./useFetchName";
-import { transformData } from "../../../utils";
+import DropDown from "./DropDown";
+import { transformData } from "../../utils";
+import { useFetch } from "../../hooks/useFetch";
 
 const InputTypeAhead = () => {
   const [query, setQuery] = useState("");
@@ -11,14 +11,15 @@ const InputTypeAhead = () => {
   const [activeIndex, setActiveIndex] = useState(-1);
   const [showDropdown, setShowDropDown] = useState(false);
 
-  const promise = async (query) =>
-    await fetch(`https://swapi.dev/api/people/?search=${query}`);
+  const promise = async (query, signal) =>
+    await fetch(`https://swapi.dev/api/people/?search=${query}`, { signal });
 
-  const [data, setData, error, loading] = useFetchName(
+  const [data, setData, error, loading] = useFetch(
     apiQuery,
     transformData,
     promise,
-    200
+    200,
+    "results"
   );
 
   const handleKeyUp = (e) => {
@@ -35,7 +36,7 @@ const InputTypeAhead = () => {
         setActiveIndex((prev) => prev + 1);
       }
     } else if (e.keyCode === 38) {
-      if (activeIndex === null || activeIndex === 0) {
+      if (activeIndex === -1 || activeIndex === 0) {
         setActiveIndex(data.length - 1);
       } else {
         setActiveIndex((prev) => prev - 1);
