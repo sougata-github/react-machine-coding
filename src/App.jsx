@@ -3,10 +3,11 @@
 // import Modal from "./components/modal/Modal";
 // import ProgressBar from "./components/ProgressBar";
 // import Comment from "./components/comments/Comment";
+import CountDownTimer from "./components/CountDownTimer";
 // import TrafficLights from "./components/TrafficLights";
 // import HolyGrailLayout from "./components/HolyGrailLayout";
 // import InputTypeAhead from "./components/TypeAhead/InputTypeAhead";
-import InfiniteScroll from "./components/InfiniteScroll/InfiniteScroll";
+// import InfiniteScroll from "./components/InfiniteScroll/InfiniteScroll";
 
 import "./App.css";
 
@@ -24,7 +25,8 @@ function App() {
       {/* <Comment /> */}
       {/* <Modal /> */}
       {/* <InputTypeAhead /> */}
-      <InfiniteScroll />
+      {/* <InfiniteScroll /> */}
+      <CountDownTimer />
 
       {/* todo:
       react hook form with validation
