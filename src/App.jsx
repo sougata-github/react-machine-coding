@@ -1,13 +1,14 @@
 // import Otp from "./components/Otp";
 // import Chart from "./components/Chart";
 // import Modal from "./components/modal/Modal";
-import ProgressBar from "./components/ProgressBar";
+// import ProgressBar from "./components/ProgressBar";
 // import Comment from "./components/comments/Comment";
-// import CountDownTimer from "./components/CountDownTimer";
 // import TrafficLights from "./components/TrafficLights";
+// import CountDownTimer from "./components/CountDownTimer";
 // import HolyGrailLayout from "./components/HolyGrailLayout";
-// import InputTypeAhead from "./components/TypeAhead/InputTypeAhead";
-// import InfiniteScroll from "./components/InfiniteScroll/InfiniteScroll";
+import FileExplorer from "./components/file-explorer/FileExplorer";
+// import InputTypeAhead from "./components/input-typeahead/InputTypeAhead";
+// import InfiniteScroll from "./components/infinite-scroll/InfiniteScroll";
 
 import "./App.css";
 
@@ -20,13 +21,14 @@ function App() {
     <main className="flex flex-col h-screen w-full items-center justify-center">
       {/* <Otp /> */}
       {/* <Chart /> */}
-      <ProgressBar />
+      {/* <ProgressBar /> */}
       {/* <TrafficLights /> */}
       {/* <Comment /> */}
       {/* <Modal /> */}
       {/* <InputTypeAhead /> */}
       {/* <InfiniteScroll /> */}
       {/* <CountDownTimer /> */}
+      <FileExplorer />
 
       {/* todo:
       react hook form with validation
