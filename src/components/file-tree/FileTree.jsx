@@ -43,7 +43,7 @@ const Root = () => {
   );
 };
 
-const FileExplorer = () => {
+const FileTree = () => {
   return (
     <FileProvider>
       <div className="py-2 h-[400px] overflow-y-auto overflow-x-clip w-80 pr-4">
@@ -57,4 +57,4 @@ const FileExplorer = () => {
   );
 };
 
-export default FileExplorer;
+export default FileTree;

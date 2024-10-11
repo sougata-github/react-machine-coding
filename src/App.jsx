@@ -4,9 +4,9 @@
 // import ProgressBar from "./components/ProgressBar";
 // import Comment from "./components/comments/Comment";
 // import TrafficLights from "./components/TrafficLights";
+import FileTree from "./components/file-tree/FileTree";
 // import CountDownTimer from "./components/CountDownTimer";
 // import HolyGrailLayout from "./components/HolyGrailLayout";
-import FileExplorer from "./components/file-explorer/FileExplorer";
 // import InputTypeAhead from "./components/input-typeahead/InputTypeAhead";
 // import InfiniteScroll from "./components/infinite-scroll/InfiniteScroll";
 
@@ -28,7 +28,7 @@ function App() {
       {/* <InputTypeAhead /> */}
       {/* <InfiniteScroll /> */}
       {/* <CountDownTimer /> */}
-      <FileExplorer />
+      <FileTree />
 
       {/* todo:
       react hook form with validation
