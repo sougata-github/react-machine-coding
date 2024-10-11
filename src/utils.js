@@ -20,11 +20,7 @@ export function isValidName(name, isFolder) {
   }
 
   const lastDotIndex = trimmedName.lastIndexOf(".");
-  if (
-    lastDotIndex === -1 ||
-    lastDotIndex === 0 ||
-    lastDotIndex === trimmedName.length - 1
-  ) {
+  if (lastDotIndex === -1 || lastDotIndex === trimmedName.length - 1) {
     return false;
   }
 
