@@ -1,8 +1,9 @@
-import { useEffect, useRef, useState } from "react";
+import Input from "./Input";
 import { v4 as uuidv4 } from "uuid";
 import { useFileContext } from "./FileContext";
+import { useEffect, useState } from "react";
 import { File, Folder, FolderOpen } from "lucide-react";
-import { ChevronRight, FilePlus2, FolderPlus, Plus } from "lucide-react";
+import { ChevronRight, FilePlus2, FolderPlus } from "lucide-react";
 
 /* eslint-disable react/prop-types */
 const Item = ({ level, expanded, handleExpand, name, id, isFolder }) => {
@@ -17,15 +18,9 @@ const Item = ({ level, expanded, handleExpand, name, id, isFolder }) => {
   );
 
   const { add } = useFileContext();
-  const inputRef = useRef(null);
+  const [type, setType] = useState("");
   const [itemName, setItemName] = useState("");
   const [isAddingItem, setIsAddingItem] = useState(false);
-
-  useEffect(() => {
-    if (isAddingItem) {
-      inputRef.current.focus();
-    }
-  }, [isAddingItem]);
 
   useEffect(() => {
     if (!expanded) {
@@ -59,17 +54,23 @@ const Item = ({ level, expanded, handleExpand, name, id, isFolder }) => {
 
   return (
     <div
-      className="flex flex-col py-2"
+      className="w-72 rounded group cursor-pointer flex flex-col py-2 relative pr-2"
       style={{
-        paddingLeft: level ? `${level * 12 + 12}px` : undefined,
+        paddingLeft: level ? `${level * 12 + 12}px` : "",
       }}
     >
+      <div
+        className="rounded hover:bg-black/5 absolute inset-0 hover:opacity-100 transition duration-300"
+        style={{
+          left: level ? `${level * 12 + 8}px` : "-2px",
+        }}
+      />
       <div className="flex justify-between">
         <div className="flex gap-2">
           {isFolder && (
             <ChevronRight
               onClick={onExpand}
-              className="cursor-pointer size-5 text-gray-500 transition duration-500"
+              className="cursor-pointer size-5 text-gray-500 transition duration-300"
               style={{
                 transform: `${expanded ? "rotate(90deg)" : "rotate(0deg)"}`,
               }}
@@ -81,16 +82,28 @@ const Item = ({ level, expanded, handleExpand, name, id, isFolder }) => {
         </div>
 
         {isFolder && (
-          <div>
+          <div className="flex gap-2 opacity-0 group-hover:opacity-100 transition duration-300 relative z-20">
             <button
               onClick={() => {
                 setIsAddingItem((prev) => !prev);
+                setType("file");
                 if (!expanded) {
                   handleExpand();
                 }
               }}
             >
-              <Plus className="size-5 text-gray-500" />
+              <FilePlus2 className="text-gray-400 size-4" />
+            </button>
+            <button
+              onClick={() => {
+                setIsAddingItem((prev) => !prev);
+                setType("folder");
+                if (!expanded) {
+                  handleExpand();
+                }
+              }}
+            >
+              <FolderPlus className="text-gray-400 size-4" />
             </button>
           </div>
         )}
@@ -98,32 +111,19 @@ const Item = ({ level, expanded, handleExpand, name, id, isFolder }) => {
 
       {isAddingItem && (
         <div
-          className="mt-2 flex justify-between"
+          className="relative z-20 mt-2 flex justify-between"
           style={{
             paddingLeft: level ? `${level * 12 + 12}px` : undefined,
           }}
         >
-          <input
-            ref={inputRef}
-            className="rounded outline-1 outline-gray-200 text-sm px-2 py-1 border border-black/10 text-gray-500"
-            value={itemName}
-            onChange={(e) => setItemName(e.target.value)}
+          <Input
+            type={type}
+            handleAdd={handleAdd}
+            isAddingItem={isAddingItem}
+            setIsAddingItem={setIsAddingItem}
+            itemName={itemName}
+            setItemName={setItemName}
           />
-
-          <div className="flex items-center gap-1">
-            <button
-              onClick={() => handleAdd("file")}
-              disabled={itemName === ""}
-            >
-              <FilePlus2 className="text-gray-400 size-4 hover:text-gray-500 transition duration-300" />
-            </button>
-            <button
-              onClick={() => handleAdd("folder")}
-              disabled={itemName === ""}
-            >
-              <FolderPlus className="text-gray-400 size-4 hover:text-gray-500 transition duration-300" />
-            </button>
-          </div>
         </div>
       )}
     </div>

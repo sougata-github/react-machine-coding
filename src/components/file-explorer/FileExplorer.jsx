@@ -23,9 +23,9 @@ const Root = () => {
   };
 
   return (
-    <div className="w-72 py-2 bg-gray-100 rounded-lg flex justify-between items-center px-2">
+    <div className="w-72 py-2 bg-gray-100 rounded flex justify-between items-center px-2">
       <input
-        className="text-gray-500 rounded outline-1 outline-gray-200 text-sm px-2 py-1"
+        className="text-gray-500 rounded outline-1 outline-gray-200 text-sm px-2 py-1 font-medium"
         value={itemName}
         onChange={(e) => setItemName(e.target.value)}
       />
@@ -33,10 +33,10 @@ const Root = () => {
       {/* buttons */}
       <div className="flex items-center gap-2">
         <button onClick={() => handleAdd("file")}>
-          <FilePlus2 className="text-gray-400 size-5 hover:text-gray-500 transition duration-300" />
+          <FilePlus2 className="text-gray-400 size-4 hover:text-gray-500 transition duration-300" />
         </button>
         <button onClick={() => handleAdd("folder")}>
-          <FolderPlus className="text-gray-400 size-5 hover:text-gray-500 transition duration-300" />
+          <FolderPlus className="text-gray-400 size-4 hover:text-gray-500 transition duration-300" />
         </button>
       </div>
     </div>
@@ -46,7 +46,7 @@ const Root = () => {
 const FileExplorer = () => {
   return (
     <FileProvider>
-      <div className="h-[400px] overflow-y-auto">
+      <div className="py-2 h-[400px] overflow-y-auto overflow-x-clip w-80 pr-4">
         <Root />
 
         <div className="mt-4">

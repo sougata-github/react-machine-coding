@@ -1,20 +1,11 @@
 import Item from "./Item";
-import { useState } from "react";
+
 import { useFileContext } from "./FileContext";
 import { AnimatePresence, motion } from "framer-motion";
 
 /* eslint-disable react/prop-types */
 const List = ({ parentId, level = 0 }) => {
-  const [expanded, setExpanded] = useState({});
-
-  const handleExpand = (id) => {
-    setExpanded((prevExpanded) => ({
-      ...prevExpanded,
-      [id]: !prevExpanded[id],
-    }));
-  };
-
-  const { items } = useFileContext();
+  const { items, expanded, handleExpand } = useFileContext();
 
   const filteredItems = parentId
     ? items.filter((item) => item.parentId === parentId)
@@ -32,7 +23,7 @@ const List = ({ parentId, level = 0 }) => {
         }}
         transition={{
           ease: "easeIn",
-          duration: 0.5,
+          duration: 0.2,
         }}
         exit={{
           opacity: 0,
