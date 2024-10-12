@@ -99,7 +99,7 @@ const InfiniteScroll = () => {
     <div>
       <input
         type="text"
-        className="border border-black/20 p-4 rounded-lg w-[400px] focus:outline-none"
+        className="border border-black/20 p-4 rounded-lg w-[200px] focus:outline-none"
         placeholder="Search..."
         onChange={handleChange}
       />

@@ -3,8 +3,8 @@ import { debounce } from "lodash";
 import { useCallback, useEffect, useState } from "react";
 
 export const useFetch = (query, transformData, promise, debounceWait, key) => {
-  const [data, setData] = useState(null);
   const [error, setError] = useState();
+  const [data, setData] = useState(null);
   const [loading, setLoading] = useState(false);
 
   const fetchName = useCallback(
