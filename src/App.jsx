@@ -1,7 +1,8 @@
 // import Otp from "./components/Otp";
 // import Chart from "./components/Chart";
 // import Modal from "./components/modal/Modal";
-import Pagination from "./components/Pagination";
+import GridLights from "./components/GridLights";
+// import Pagination from "./components/Pagination";
 // import ProgressBar from "./components/ProgressBar";
 // import Comment from "./components/comments/Comment";
 // import TrafficLights from "./components/TrafficLights";
@@ -31,16 +32,12 @@ function App() {
         {/* <InfiniteScroll /> */}
         {/* <CountDownTimer /> */}
         {/* <FileTree /> */}
-        <Pagination />
+        {/* <Pagination /> */}
+        <GridLights />
 
         {/* todo:
       react hook form with validation
-      sorting & filtering
-      pagination
-      infinite-scroll
-      render on search
-      debouce and search
-      input search(typeahead)  */}
+      sorting & filtering */}
       </main>
     </Router>
   );
