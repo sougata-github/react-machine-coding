@@ -3,8 +3,8 @@ import { useEffect, useRef, useState } from "react";
 const TOTAL_LIGHTS = 9;
 
 const GridLights = () => {
-  const timeoutRef = useRef([]);
   const buttonRefs = useRef([]);
+  const timeoutRefs = useRef([]);
   const [active, setActive] = useState({});
   const [sequence, setSequence] = useState([]);
 
@@ -34,7 +34,7 @@ const GridLights = () => {
             .slice()
             .reverse()
             .forEach((index, i) => {
-              timeoutRef.current[i] = setTimeout(() => {
+              timeoutRefs.current[i] = setTimeout(() => {
                 setActive((prev) => ({
                   ...prev,
                   [index]: false,
@@ -59,7 +59,7 @@ const GridLights = () => {
 
     disableLights();
 
-    const currentTimeouts = timeoutRef.current;
+    const currentTimeouts = timeoutRefs.current;
 
     return () => currentTimeouts.forEach((timeout) => clearTimeout(timeout));
   }, [sequence]);

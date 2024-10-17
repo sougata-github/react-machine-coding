@@ -1,7 +1,8 @@
 // import Otp from "./components/Otp";
 // import Chart from "./components/Chart";
 // import Modal from "./components/modal/Modal";
-import GridLights from "./components/GridLights";
+import LikeButton from "./components/LikeButton";
+// import GridLights from "./components/GridLights";
 // import Pagination from "./components/Pagination";
 // import ProgressBar from "./components/ProgressBar";
 // import Comment from "./components/comments/Comment";
@@ -33,7 +34,8 @@ function App() {
         {/* <CountDownTimer /> */}
         {/* <FileTree /> */}
         {/* <Pagination /> */}
-        <GridLights />
+        {/* <GridLights /> */}
+        <LikeButton />
 
         {/* todo:
       react hook form with validation
