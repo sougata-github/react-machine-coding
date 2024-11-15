@@ -29,7 +29,7 @@ const DragDrop = () => {
   };
 
   return (
-    <div className="p-4">
+    <div className="p-4 overflow-x-hidden">
       <div className="flex gap-4 max-sm:flex-col">
         <DndContext onDragEnd={handleDragEnd}>
           {COLUMNS.map((column) => (
@@ -56,7 +56,7 @@ const Column = ({ column, tasks }) => {
   //for large scale app, fetch the tasks in this component based on the column id.
 
   return (
-    <div className="min-h-[400px] flex flex-col rounded-lg bg-neutral-100 p-4 max-w-[320px] w-full">
+    <div className="min-h-[500px] flex flex-col rounded-lg bg-neutral-100 p-4 max-w-[320px] w-full">
       <h2 className="mb-4 font-semibold text-neutral-400">{column.title}</h2>
       <div ref={setNodeRef} className="mt-4 flex flex-1 flex-col gap-4">
         {tasks.map((task) => (
