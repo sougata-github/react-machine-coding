@@ -1,7 +1,7 @@
 // import Otp from "./components/Otp";
 // import Chart from "./components/Chart";
 // import Modal from "./components/modal/Modal";
-import LikeButton from "./components/LikeButton";
+// import LikeButton from "./components/LikeButton";
 // import GridLights from "./components/GridLights";
 // import Pagination from "./components/Pagination";
 // import ProgressBar from "./components/ProgressBar";
@@ -13,6 +13,8 @@ import LikeButton from "./components/LikeButton";
 // import InputTypeAhead from "./components/input-typeahead/InputTypeAhead";
 // import InfiniteScroll from "./components/infinite-scroll/InfiniteScroll";
 
+import DragDrop from "./drag-drop";
+
 import "./App.css";
 import { BrowserRouter as Router } from "react-router-dom";
 
@@ -22,7 +24,7 @@ function App() {
     //   <HolyGrailLayout />
     // </>
     <Router>
-      <main className="flex flex-col h-screen w-full items-center justify-center">
+      <main className="flex flex-col min-h-screen w-full items-center justify-center">
         {/* <Otp /> */}
         {/* <Chart /> */}
         {/* <ProgressBar /> */}
@@ -35,7 +37,9 @@ function App() {
         {/* <FileTree /> */}
         {/* <Pagination /> */}
         {/* <GridLights /> */}
-        <LikeButton />
+        {/* <LikeButton /> */}
+
+        <DragDrop />
 
         {/* todo:
       react hook form with validation
