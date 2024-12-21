@@ -12,11 +12,12 @@
 // import HolyGrailLayout from "./components/HolyGrailLayout";
 // import InputTypeAhead from "./components/input-typeahead/InputTypeAhead";
 // import InfiniteScroll from "./components/infinite-scroll/InfiniteScroll";
-
-import DragDrop from "./drag-drop";
-
+// import DragDrop from "./drag-drop";
 import "./App.css";
+
 import { BrowserRouter as Router } from "react-router-dom";
+
+import FileUploader from "./components/file-uploads/FileUploader";
 
 function App() {
   return (
@@ -38,8 +39,9 @@ function App() {
         {/* <Pagination /> */}
         {/* <GridLights /> */}
         {/* <LikeButton /> */}
+        {/* <DragDrop /> */}
 
-        <DragDrop />
+        <FileUploader />
 
         {/* todo:
       react hook form with validation
