@@ -71,7 +71,7 @@ const FileUploader = () => {
         </div>
       )}
 
-      {file && (
+      {file && status !== "success" && (
         <button
           onClick={handleFileUpload}
           className="w-[120px] px-4 py-2 rounded-lg bg-black text-white text-sm"
