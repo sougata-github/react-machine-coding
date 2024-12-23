@@ -13,11 +13,12 @@
 // import InputTypeAhead from "./components/input-typeahead/InputTypeAhead";
 // import InfiniteScroll from "./components/infinite-scroll/InfiniteScroll";
 // import DragDrop from "./drag-drop";
+// import FileUploader from "./components/file-uploads/FileUploader";
 import "./App.css";
 
 import { BrowserRouter as Router } from "react-router-dom";
 
-import FileUploader from "./components/file-uploads/FileUploader";
+import Password from "./components/password-checker/Password";
 
 function App() {
   return (
@@ -40,8 +41,8 @@ function App() {
         {/* <GridLights /> */}
         {/* <LikeButton /> */}
         {/* <DragDrop /> */}
-
-        <FileUploader />
+        {/* <FileUploader /> */}
+        <Password />
 
         {/* todo:
       react hook form with validation
