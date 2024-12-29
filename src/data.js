@@ -69,3 +69,31 @@ export const INITIAL_TASKS = [
     status: "DONE",
   },
 ];
+
+export const tableData = [
+  {
+    id: 1,
+    name: "Alice Johnson",
+    email: "alice.johnson@example.com",
+    role: "Admin",
+  },
+  { id: 2, name: "Bob Smith", email: "bob.smith@example.com", role: "Editor" },
+  {
+    id: 3,
+    name: "Charlie Brown",
+    email: "charlie.brown@example.com",
+    role: "Viewer",
+  },
+  {
+    id: 4,
+    name: "Diana Prince",
+    email: "diana.prince@example.com",
+    role: "Contributor",
+  },
+  {
+    id: 5,
+    name: "Ethan Hunt",
+    email: "ethan.hunt@example.com",
+    role: "Manager",
+  },
+];

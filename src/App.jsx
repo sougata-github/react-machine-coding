@@ -14,11 +14,28 @@
 // import InfiniteScroll from "./components/infinite-scroll/InfiniteScroll";
 // import DragDrop from "./drag-drop";
 // import FileUploader from "./components/file-uploads/FileUploader";
+// import Password from "./components/password-checker/Password";
 import "./App.css";
 
 import { BrowserRouter as Router } from "react-router-dom";
 
-import Password from "./components/password-checker/Password";
+import DataTable from "./components/resuable-components/DataTable";
+import { tableData } from "./data";
+
+const columns = [
+  { key: "id", header: "ID" },
+  { key: "name", header: "Name" },
+  {
+    key: "email",
+    header: "Email",
+    render: (value) => (
+      <a href={`mailto:${value}`} className="text-blue-500 underline">
+        {value}
+      </a>
+    ),
+  },
+  { key: "role", header: "Role" },
+];
 
 function App() {
   return (
@@ -42,7 +59,8 @@ function App() {
         {/* <LikeButton /> */}
         {/* <DragDrop /> */}
         {/* <FileUploader /> */}
-        <Password />
+        {/* <Password /> */}
+        <DataTable columns={columns} data={tableData} />
 
         {/* todo:
       react hook form with validation
