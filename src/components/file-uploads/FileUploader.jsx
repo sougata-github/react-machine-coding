@@ -26,6 +26,8 @@ const FileUploader = () => {
     if (e.target.files) {
       setFile(e.target.files[0]);
     }
+
+    setStatus("idle");
   };
 
   const handleFileUpload = async () => {
@@ -39,7 +41,7 @@ const FileUploader = () => {
 
     /*Typically what you would do is make a post request with the file and run a server-action that updates the database with the file url.*/
     try {
-      await axios.post("https://httpbin.org/post", file, {
+      await axios.post("https://httpbin.org/post", formData, {
         headers: {
           "Content-Type": "multipart/form-data",
         },
